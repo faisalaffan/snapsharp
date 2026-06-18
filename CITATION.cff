@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "Jika Anda menggunakan SnapSharp dalam riset atau publikasi, silakan sitasi seperti di bawah ini."
+title: SnapSharp
+abstract: ".NET SDK untuk BI SNAP (Standar Nasional Open API Pembayaran) — zero-dependency library untuk integrasi aplikasi dengan standar Bank Indonesia."
+authors:
+  - family-names: Affan
+    given-names: Muhammad Faisal
+    orcid: null
+repository-code: "https://github.com/faisalaffan/snapsharp"
+license: MIT
+version: 0.1.0
+date-released: 2026-06-18
+keywords:
+  - "BI SNAP"
+  - ".NET"
+  - "SDK"
+  - "Payment"
+  - "Indonesia"
+  - "Open API"
