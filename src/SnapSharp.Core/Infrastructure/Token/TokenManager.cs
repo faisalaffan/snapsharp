@@ -7,7 +7,7 @@ using SnapSharp.Infrastructure.Serialization;
 
 namespace SnapSharp.Infrastructure.Token;
 
-internal sealed class TokenManager : IDisposable
+public sealed class TokenManager : IDisposable
 {
     private readonly HttpClient _httpClient;
     private readonly SemaphoreSlim _tokenLock = new(1, 1);
