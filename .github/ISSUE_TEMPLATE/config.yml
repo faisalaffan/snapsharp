@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 📖 Dokumentasi
+    url: https://github.com/faisalaffan/snapsharp/tree/dev/docs
+    about: Baca dokumentasi sebelum membuat issue
+  - name: 💬 Diskusi
+    url: https://github.com/faisalaffan/snapsharp/discussions
+    about: Tanya jawab dan diskusi komunitas
