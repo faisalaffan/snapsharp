@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/SnapSharp.Cli/SnapSharp.Cli.csproj" />
+    <Project Path="src/SnapSharp.Core/SnapSharp.Core.csproj" />
+    <Project Path="src/SnapSharp.ReferenceApp/SnapSharp.ReferenceApp.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/SnapSharp.Cli.Tests/SnapSharp.Cli.Tests.csproj" />
+    <Project Path="tests/SnapSharp.Core.Tests/SnapSharp.Core.Tests.csproj" />
+  </Folder>
+</Solution>
