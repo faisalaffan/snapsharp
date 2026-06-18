@@ -1,16 +1,17 @@
-﻿using System.Security.Cryptography;
+using System.Security.Cryptography;
 using System.Text;
-using SnapSharp.Exceptions;
+using SnapSharp.Domain.Exceptions;
+using SnapSharp.Domain.Options;
 
-namespace SnapSharp.Http;
+namespace SnapSharp.Infrastructure.Http;
 
 internal sealed class SnapSharpHttpHandler : DelegatingHandler
 {
     private readonly SnapSharpOptions _options;
     private readonly RSA _rsa;
 
-    public SnapSharpHttpHandler(SnapSharpOptions options, HttpMessageHandler innerHandler)
-        : base(innerHandler)
+    public SnapSharpHttpHandler(SnapSharpOptions options)
+        : base(new HttpClientHandler())
     {
         _options = options;
         _rsa = RSA.Create();
@@ -24,7 +25,7 @@ internal sealed class SnapSharpHttpHandler : DelegatingHandler
             .ToString("yyyy-MM-ddTHH:mm:sszzz");
 
         var bodyContent = request.Content is not null
-            ? await request.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false)
+            ? await request.Content.ReadAsStringAsync(cancellationToken)
             : string.Empty;
         var bodyHash = ComputeSha256Hex(bodyContent).ToLowerInvariant();
 
@@ -40,7 +41,7 @@ internal sealed class SnapSharpHttpHandler : DelegatingHandler
         request.Headers.Add("CHANNEL-ID", _options.ChannelId);
         request.Headers.Add("X-EXTERNAL-ID", Guid.NewGuid().ToString("N"));
 
-        return await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
+        return await base.SendAsync(request, cancellationToken);
     }
 
     private static string ComputeSha256Hex(string input)

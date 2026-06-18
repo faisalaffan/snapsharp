@@ -3,7 +3,9 @@ using System.Text;
 using System.Text.Json;
 using SnapSharp.Authentication;
 using SnapSharp.Exceptions;
-using SnapSharp.Http;
+using SnapSharp.Infrastructure.Http;
+using SnapSharp.Infrastructure.Serialization;
+using SnapSharp.Models;
 using SnapSharp.Services;
 
 namespace SnapSharp;
@@ -35,8 +37,7 @@ public sealed class SnapSharpClient : ISnapSharpClient
         if (string.IsNullOrWhiteSpace(options.PrivateKeyPem))
             throw new ArgumentException("PrivateKeyPem is required.", nameof(options));
 
-        var innerHandler = handler ?? new HttpClientHandler();
-        var signingHandler = new SnapSharpHttpHandler(options, innerHandler);
+        var signingHandler = new SnapSharpHttpHandler(options);
         _httpClient = new HttpClient(signingHandler)
         {
             BaseAddress = new Uri(options.BaseUrl.TrimEnd('/') + "/"),
@@ -78,7 +79,7 @@ public sealed class SnapSharpClient : ISnapSharpClient
 
         if (body is not null)
         {
-            var json = JsonSerializer.Serialize(body, SnapSharpJsonContext.Default.Options);
+            var json = JsonSerializer.Serialize(body, SnapSharpJsonContext.Instance.Options);
             request.Content = new StringContent(json, Encoding.UTF8, "application/json");
         }
 
@@ -90,7 +91,7 @@ public sealed class SnapSharpClient : ISnapSharpClient
             try
             {
                 var error = JsonSerializer.Deserialize<SnapSharpErrorResponse>(
-                    responseBody, SnapSharpJsonContext.Default.Options);
+                    responseBody, SnapSharpJsonContext.Instance.Options);
                 if (error is not null)
                     throw new SnapSharpApiException(
                         (int)response.StatusCode, error.ResponseCode, error.ResponseMessage);
@@ -104,7 +105,7 @@ public sealed class SnapSharpClient : ISnapSharpClient
         }
 
         var result = JsonSerializer.Deserialize<TResponse>(
-            responseBody, SnapSharpJsonContext.Default.Options);
+            responseBody, SnapSharpJsonContext.Instance.Options);
 
         return result ?? throw new SnapSharpException(
             $"Deserialization returned null for {typeof(TResponse).Name}");
