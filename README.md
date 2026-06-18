@@ -1,3 +1,13 @@
+<p align="center">
+  <img src="assets/banner.svg" alt="SnapSharp Banner" width="100%">
+</p>
+
+---
+
+<p align="center">
+  <img src="assets/logo.svg" alt="SnapSharp Logo" width="120">
+</p>
+
 # SnapSharp
 
 **.NET SDK for BI SNAP** (Standar Nasional Open API Pembayaran)
@@ -6,7 +16,7 @@
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![NuGet](https://img.shields.io/badge/nuget-coming_soon-blue)](https://www.nuget.org/)
 
-Open-source, zero-dependency .NET SDK untuk integrasi aplikasi dengan standar BI SNAP yang ditetapkan oleh Bank Indonesia.
+> Open-source, zero-dependency .NET SDK untuk integrasi aplikasi dengan standar BI SNAP yang ditetapkan oleh Bank Indonesia.
 
 ## Service Coverage
 

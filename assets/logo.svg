@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <!-- Background circle -->
+  <circle cx="256" cy="256" r="240" fill="#0D1B2A"/>
+  <!-- Shield shape -->
+  <path d="M256 80 L380 140 L380 280 C380 370 256 440 256 440 C256 440 132 370 132 280 L132 140 Z" fill="#1E3A5F" stroke="#00E676" stroke-width="6"/>
+  <!-- Checkmark -->
+  <path d="M200 270 L240 310 L320 210" stroke="#00E676" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- "SNAP" text under shield -->
+  <text x="256" y="490" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="64" letter-spacing="4" fill="#00E676">SNAP</text>
+</svg>
