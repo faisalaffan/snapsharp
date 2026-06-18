@@ -1,11 +1,9 @@
 <p align="center">
-  <img src="assets/banner.svg" alt="SnapSharp Banner" width="100%">
+  <img src="assets/02_BANNER.png" alt="SnapSharp Banner" width="100%">
 </p>
 
----
-
 <p align="center">
-  <img src="assets/logo.svg" alt="SnapSharp Logo" width="120">
+  <img src="assets/01_LOGO.png" alt="SnapSharp Logo" width="100">
 </p>
 
 # SnapSharp
