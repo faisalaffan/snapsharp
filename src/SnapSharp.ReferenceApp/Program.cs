@@ -1,7 +1,13 @@
-using System.Text.Json;
 using SnapSharp;
-using SnapSharp.Exceptions;
-using SnapSharp.Models;
+using SnapSharp.Application.Contracts.Account;
+using SnapSharp.Application.Contracts.Auth;
+using SnapSharp.Application.Contracts.DirectDebit;
+using SnapSharp.Application.Contracts.Qris;
+using SnapSharp.Application.Contracts.Transfer;
+using SnapSharp.Application.Contracts.VirtualAccount;
+using SnapSharp.Application.Interfaces;
+using SnapSharp.Domain.Exceptions;
+using SnapSharp.Domain.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,8 +24,7 @@ var snapOptions = new SnapSharpOptions
     MaxRetries = int.Parse(snapSection["MaxRetries"] ?? "3"),
 };
 
-builder.Services.AddSingleton(snapOptions);
-builder.Services.AddSingleton<ISnapSharpClient, SnapSharpClient>();
+builder.Services.AddSnapSharp(snapOptions);
 
 // ── Swagger ──────────────────────────────────────────────────────────────────
 builder.Services.AddEndpointsApiExplorer();
