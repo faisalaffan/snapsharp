@@ -1,13 +1,9 @@
 using SnapSharp.Application.Interfaces;
-using SnapSharp.Infrastructure.Token;
 
 namespace SnapSharp;
 
 public sealed class SnapSharpClient : ISnapSharpClient
 {
-    private readonly HttpClient _httpClient;
-    private readonly TokenManager _tokenManager;
-
     public IAuthService Auth { get; }
     public IAccountService Account { get; }
     public ITransferService Transfer { get; }
@@ -21,9 +17,7 @@ public sealed class SnapSharpClient : ISnapSharpClient
         ITransferService transfer,
         IVirtualAccountService virtualAccount,
         IQrisService qris,
-        IDirectDebitService directDebit,
-        HttpClient httpClient,
-        TokenManager tokenManager)
+        IDirectDebitService directDebit)
     {
         Auth = auth;
         Account = account;
@@ -31,13 +25,7 @@ public sealed class SnapSharpClient : ISnapSharpClient
         VirtualAccount = virtualAccount;
         Qris = qris;
         DirectDebit = directDebit;
-        _httpClient = httpClient;
-        _tokenManager = tokenManager;
     }
 
-    public void Dispose()
-    {
-        _httpClient.Dispose();
-        _tokenManager.Dispose();
-    }
+    public void Dispose() { }
 }

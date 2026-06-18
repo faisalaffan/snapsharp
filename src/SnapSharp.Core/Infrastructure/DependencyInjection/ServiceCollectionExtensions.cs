@@ -33,6 +33,10 @@ public static class SnapSharpServiceCollectionExtensions
         })
         .AddHttpMessageHandler<SnapSharpHttpHandler>();
 
+        // Re-register ISnapSharpMessageSender as singleton to avoid captive dependency
+        services.AddSingleton<ISnapSharpMessageSender>(sp =>
+            sp.GetRequiredService<SnapSharpMessageSender>());
+
         // Services
         services.AddSingleton<IAuthService, AuthService>();
         services.AddSingleton<IAccountService, AccountService>();

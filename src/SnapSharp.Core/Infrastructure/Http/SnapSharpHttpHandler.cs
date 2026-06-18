@@ -11,7 +11,7 @@ internal sealed class SnapSharpHttpHandler : DelegatingHandler
     private readonly RSA _rsa;
 
     public SnapSharpHttpHandler(SnapSharpOptions options)
-        : base(new HttpClientHandler())
+        : base()
     {
         _options = options;
         _rsa = RSA.Create();
